@@ -1,0 +1,30 @@
+using UnityEngine;
+using TMPro; // for TextMeshPro
+
+public class ScoreManager : MonoBehaviour
+{
+    public static ScoreManager instance;  // make it accessible globally
+    public TextMeshProUGUI scoreText;     // link the UI text
+    private int score = 0;                // start score
+
+    void Awake()
+    {
+        instance = this; // make this script easy to access
+    }
+
+    void Start()
+    {
+        UpdateScoreText();
+    }
+
+    public void AddScore(int amount)
+    {
+        score += amount;
+        UpdateScoreText();
+    }
+
+    void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + score;
+    }
+}
